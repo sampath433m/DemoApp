@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DragViewSample"
+             x:Class="DragViewSample.MainPage" BackgroundImage="background4.png" >
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <StackLayout  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+
+        <Image AutomationId="btnPic" x:Name="picBtn" Margin="0,30,10,10" Source="username.png" VerticalOptions="Start" 
+               HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" WidthRequest="45"  HeightRequest="45">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnPicImageButtonClicked" />
+            </Image.GestureRecognizers>
+        </Image>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal">
+        
+        <StackLayout x:Name="menus" IsVisible="false" Margin="20,-20,-20,0" Orientation="Horizontal" HorizontalOptions="EndAndExpand"  >
+           
+
+
+                <Image x:Name="RedBtn" Margin="0,0,10,0"    Source="red.png" BackgroundColor="Transparent" HorizontalOptions="End" WidthRequest="25" HeightRequest="25"/>
+            <Image x:Name="GreenBtn" Margin="0,0,10,0"     Source="green.png"  BackgroundColor="Transparent" HorizontalOptions="End" WidthRequest="25" HeightRequest="25"/>
+            <Image x:Name="BlueBtn" Margin="0,0,10,0"    Source="blue.png"  BackgroundColor="Transparent" HorizontalOptions="End" WidthRequest="25" HeightRequest="25"/>
+
+            <Image x:Name="YellowBtn" Margin="0,0,10,0"     Source="yellow.png"  BackgroundColor="Transparent" HorizontalOptions="End" WidthRequest="25" HeightRequest="25"/>
+            
+            <Image x:Name="PurpleBtn"  Margin="0,0,10,0"    Source="purple.png"  BackgroundColor="Transparent" HorizontalOptions="End" WidthRequest="25" HeightRequest="25"/>
+
+           
+        </StackLayout>
+                <Image AutomationId="btnFab" x:Name="fabBtn" Margin="0,20,10,10" Source="color.png" VerticalOptions="Start" 
+               HorizontalOptions="EndAndExpand" BackgroundColor="Transparent" WidthRequest="45"  HeightRequest="45">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnFabImageButtonClicked" />
+            </Image.GestureRecognizers>
+        </Image>
+                </StackLayout>
+    <StackLayout 
+                          VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+        <StackLayout.GestureRecognizers>
+            <PinchGestureRecognizer PinchUpdated="OnPinchUpdated" />
+        </StackLayout.GestureRecognizers>
+        <local:DraggableView   VerticalOptions="CenterAndExpand"
+                          DragMode="LongPress" DragDirection="All" >
+            <local:DraggableView.Content>
+
+                <BoxView x:Name="image" BackgroundColor="Red" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" VerticalOptions="Center">
+                    <!--<BoxView.GestureRecognizers>  
+                          <PinchGestureRecognizer PinchUpdated="OnPinchUpdated" /> </BoxView.GestureRecognizers>-->
+
+                </BoxView>
+            </local:DraggableView.Content>
+        </local:DraggableView>
+    </StackLayout>
+        </StackLayout>
+
+                <StackLayout Orientation="Vertical" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                    <Label Text="Fade" TextColor="White" HorizontalTextAlignment="Center" />
+                    <Slider x:Name="SDemo"   Minimum="0" Maximum="100" VerticalOptions="Center" ValueChanged="OnSliderValueChanged" />
+
+                    <Label Text="Transitions" TextColor="White" HorizontalTextAlignment="Center" />
+                    
+                    <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand" 
+                                 HorizontalOptions="FillAndExpand" Spacing="5">
+                    <Button Text="Animate 1" HorizontalOptions="FillAndExpand" x:Name="A1"/>
+                <Button Text="Animate 2" HorizontalOptions="FillAndExpand" x:Name="A2"/>
+                <Button Text="Animate 3" HorizontalOptions="FillAndExpand" x:Name="A3"/>
+                    </StackLayout>
+                   
+                    <Label Text="Rotate" TextColor="White" HorizontalTextAlignment="Center" />
+                    <Slider x:Name="SDemo2" Minimum="0" Maximum="100"  VerticalOptions="Center" Margin="0,0,0,30" ValueChanged="SDemo2_ValueChanged" />
+
+                </StackLayout>
+           
+        </StackLayout>
+    
+</ContentPage>
